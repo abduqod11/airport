@@ -26,14 +26,14 @@ public class Airport {
                     0. Chiqish
                     1. Barcha reyslar ko'rish
                     2. Chipta olish🎫
-                    3. Biz bilan bog'lanish    
+                    3. Biz bilan bog'lanish☎️ 
                     """);
             int tanla = intScanner.nextInt();
             if(tanla == 0) break;
             switch (tanla){
                 case 1-> menuRaces();
                 case 2-> checkOut();
-              //  case 3-> lineWithUs();
+                case 3-> lineWithMe();
             }
         }
     }
@@ -214,13 +214,20 @@ public class Airport {
     }
 
     private static void lineWithMe(){
-        int number = intScanner.nextInt();
+        boolean check = true;
         while (true){
             System.out.print("Nomer kiriting: ");
+            long number = intScanner.nextLong();
             if(number > 10){
-                System.out.print("Sizning telefon raqamingizga sms kod yuborildi,kiriting: ");
-
-            }
+                System.out.println("Sizning telefon raqamingizga sms kod yuborildi");
+                int sentCode = (int)(Math.random() * 10000);
+                System.out.println("Sizning kodingiz: " + sentCode);
+                System.out.print("Sms kodingizni kiriting: ");
+                int enterCode = intScanner.nextInt();
+                if(enterCode == sentCode){
+                    System.out.println("Biz bilan bog'lanishingiz mumkin telegram orqali aloqaga chiqamiz");
+                }else System.out.println("Sms kodini xato kiritingiz, tekshirib qayta kiriting");
+            }else System.out.println("Telefon raqami xato kiritildi");break;
 
         }
     }
