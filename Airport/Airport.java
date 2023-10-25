@@ -25,13 +25,15 @@ public class Airport {
             System.out.println("""
                     0. Chiqish
                     1. Barcha reyslar ko'rish
-                    2. Chipta olish         
+                    2. Chipta olish🎫
+                    3. Biz bilan bog'lanish    
                     """);
             int tanla = intScanner.nextInt();
             if(tanla == 0) break;
             switch (tanla){
                 case 1-> menuRaces();
                 case 2-> checkOut();
+              //  case 3-> lineWithUs();
             }
         }
     }
@@ -83,12 +85,30 @@ public class Airport {
         }
     }
 
+    private static void menuRaces() {
+        while (true) {
+            System.out.println("""
+                    0. Chiqish
+                    1. Hamma reyslarni ko'rish
+                    2. Viloyatlar aro reyslar
+                    3. Sana bo'yicha qidirish
+                    """);
+            int tanla = intScanner.nextInt();
+            if (tanla == 0) break;
+            switch (tanla) {
+                case 1 -> allRaces();
+                case 2 -> oneRegion();
+                case 3 -> searchDate();
+            }
+        }
+    }
+
     private static void checkOut(){
         boolean check = false;
         while (true){
             System.out.println("""
                     0. Chiqish
-                    1. Chipta sotib olish
+                    1. Chipta sotib olish🎫
                     """);
             int tanla = intScanner.nextInt();
             if(tanla == 0) break;
@@ -107,13 +127,14 @@ public class Airport {
                     if((Objects.equals(lines.get(i).getOrigin().toLowerCase(),origin.toLowerCase())) &&
                             (Objects.equals(lines.get(i).getDestination().toLowerCase(),destination.toLowerCase()))){
 
-                        System.out.println("------------------------------\nFirstname: " + firstname + "\n" +
-                                          "Surname: " + surname + "\n" +
-                                          "Age: " + (2023 - year) + "\n" +
-                                          "Origin: " + origin + "\n" +
-                                          "Destination: " + destination + "\n" +
-                                          "Detarture: " + lines.get(i).getDeparture() + "\n" +
-                                          "Ticket cost: " + lines.get(i).getPrice() + "$\n------------------------------");
+                        System.out.println("------------------------------\n" +
+                                          "Ismingiz: " + firstname + "\n" +
+                                          "Familiyangiz: " + surname + "\n" +
+                                          "Yoshingiz: " + (2023 - year) + "\n" +
+                                          "Qayerdan: " + origin + "\n" +
+                                          "qayerga: " + destination + "\n" +
+                                          "Ketish: " + lines.get(i).getDeparture() + "\n" +
+                                          "Chipta narxi: " + lines.get(i).getPrice() + "$\n------------------------------");
                         check = true;
                         break;
                     }
@@ -123,23 +144,6 @@ public class Airport {
                 }else{
                     break;
                 }
-            }
-        }
-    }
-    private static void menuRaces() {
-        while (true) {
-            System.out.println("""
-                    0. Chiqish
-                    1. Hamma reyslarni ko'rish
-                    2. Viloyatlar aro reyslar
-                    3. Sana bo'yicha qidirish
-                    """);
-            int tanla = intScanner.nextInt();
-            if (tanla == 0) break;
-            switch (tanla) {
-                case 1 -> allRaces();
-                case 2 -> oneRegion();
-                case 3 -> searchDate();
             }
         }
     }
@@ -206,6 +210,18 @@ public class Airport {
                 if(!check) System.out.println("Bunday sanadagi reys mavjud emas");
             }
             if(check) break;
+        }
+    }
+
+    private static void lineWithMe(){
+        int number = intScanner.nextInt();
+        while (true){
+            System.out.print("Nomer kiriting: ");
+            if(number > 10){
+                System.out.print("Sizning telefon raqamingizga sms kod yuborildi,kiriting: ");
+
+            }
+
         }
     }
 }
