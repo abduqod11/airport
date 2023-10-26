@@ -13,27 +13,39 @@ public class Airport {
     static Scanner strScanner = new Scanner(System.in);
     static Scanner intScanner = new Scanner(System.in);
     static Scanner str2Scanner = new Scanner(System.in);
+    static String[] log = {"qwerty@gmai l.com","asdfg112@gamil.com","erghs34@gamil.com"};
+    static String[] password = {"qwe123","esd0929","ersim8103"};
+
     static String[] regions = {"Toshkent", "Toshkent viloyati", "Andijon viloyati", "Farg'ona viloyati", "Namangan viloyati", "Sirdaryo viloyati",
             "Jizzax viloyati", "Samarqand viloyati", "Surxandaryo viloyati", "Qashqadaryo viloyati", "Buxoro viloyati", "Navoiy viloyati",
             "Xorazm viloyati", "Qoraqalpog'iston respublikasi"};
 
     public static void main(String[] args) {
-        getreaces();
-        System.out.println("                                                              ✈️Xush kelibsiz✈️");
-        System.out.println("                           Siz O'zbekiston havo yoʻllari \uD83C\uDF10onlayn saytiga tashrif buyurganingizdan bag'oyatda xursandmiz❗");
-        while (true) {
-            System.out.println("""
-                    0. Chiqish
-                    1. Barcha reyslar ko'rish
-                    2. Chipta olish🎫
-                    3. Biz bilan bog'lanish☎️ 
-                    """);
-            int tanla = intScanner.nextInt();
-            if(tanla == 0) break;
-            switch (tanla){
-                case 1-> menuRaces();
-                case 2-> checkOut();
-                case 3-> lineWithMe();
+        System.out.print("Akkauntga kirish: ");
+        String loginAcc = strScanner.next();
+        System.out.print("Parolni kiriting: ");
+        String passwordMenu = strScanner.next();
+        for (int i = 0; i < log.length; i++) {
+            if (loginAcc.equals(log[i]) && passwordMenu.equals(password[i])) {
+
+                getreaces();
+                System.out.println("                                                              ✈️Xush kelibsiz✈️");
+                System.out.println("                           Siz O'zbekiston havo yoʻllari \uD83C\uDF10onlayn saytiga tashrif buyurganingizdan bag'oyatda xursandmiz❗");
+                while (true) {
+                    System.out.println("""
+                            0. Chiqish
+                            1. Barcha reyslar ko'rish
+                            2. Chipta olish🎫
+                            3. Biz bilan bog'lanish☎️ 
+                            """);
+                    int tanla = intScanner.nextInt();
+                    if (tanla == 0) break;
+                    switch (tanla) {
+                        case 1 -> menuRaces();
+                        case 2 -> checkOut();
+                        case 3 -> lineWithMe();
+                    }
+                }
             }
         }
     }
@@ -214,18 +226,17 @@ public class Airport {
     }
 
     private static void lineWithMe(){
-        boolean check = true;
         while (true){
             System.out.print("Nomer kiriting: ");
             long number = intScanner.nextLong();
-            if(number > 10){
+            if(number >= 10){
                 System.out.println("Sizning telefon raqamingizga sms kod yuborildi");
                 int sentCode = (int)(Math.random() * 10000);
                 System.out.println("Sizning kodingiz: " + sentCode);
                 System.out.print("Sms kodingizni kiriting: ");
                 int enterCode = intScanner.nextInt();
                 if(enterCode == sentCode){
-                    System.out.println("Biz bilan bog'lanishingiz mumkin telegram orqali aloqaga chiqamiz");
+                    System.out.println("Siz bilan qisqa vaqtlarda aloqaga chiqamiz");
                 }else System.out.println("Sms kodini xato kiritingiz, tekshirib qayta kiriting");
             }else System.out.println("Telefon raqami xato kiritildi");break;
 
